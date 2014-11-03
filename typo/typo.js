@@ -134,20 +134,6 @@ Typo.prototype = {
    * @returns string The file data.
    */
 
-  _readFile: function(path, charset) {
-    if (!charset) charset = "ISO8859-1";
-
-    var req = new XMLHttpRequest();
-    req.open("GET", path, false);
-
-    if (req.overrideMimeType)
-      req.overrideMimeType("text/plain; charset=" + charset);
-
-    req.send(null);
-
-    return req.responseText;
-  },
-
   /**
    * Parse the rules out from a .aff file.
    *
