@@ -33,6 +33,8 @@
  * @returns {Typo} A Typo object.
  */
 
+var fs = require('fs');
+
 var Typo = function(dictionary, affData, wordsData, settings) {
   settings = settings || {};
 
@@ -752,5 +754,12 @@ Typo.prototype = {
     }
 
     return correct(word);
+  }
+};
+
+module.exports = {
+  check: function(word) {
+    var typo = new Typo('en_US');
+    return typo.check(word);
   }
 };
