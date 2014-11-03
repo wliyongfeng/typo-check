@@ -1,0 +1,8 @@
+{
+  "name": "typo-check",
+  "description": "a node package to check english word typo",
+  "version": "0.0.1",
+  "main": "typo/typo.js",
+  "devDependencies": {
+  }
+}
