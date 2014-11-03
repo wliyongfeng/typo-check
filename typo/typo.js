@@ -36,9 +36,6 @@
 var Typo = function(dictionary, affData, wordsData, settings) {
   settings = settings || {};
 
-  /** Determines the method used for auto-loading .aff and .dic files. **/
-  this.platform = settings.platform || "chrome";
-
   this.dictionary = null;
 
   this.rules = {};
@@ -54,15 +51,8 @@ var Typo = function(dictionary, affData, wordsData, settings) {
   if (dictionary) {
     this.dictionary = dictionary;
 
-    if (this.platform == "chrome") {
-      if (!affData) affData = this._readFile(chrome.extension.getURL("lib/typo/dictionaries/" + dictionary + "/" + dictionary + ".aff"));
-      if (!wordsData) wordsData = this._readFile(chrome.extension.getURL("lib/typo/dictionaries/" + dictionary + "/" + dictionary + ".dic"));
-    } else {
-      var path = settings.dictionaryPath || '';
-
-      if (!affData) affData = this._readFile(path + "/" + dictionary + "/" + dictionary + ".aff");
-      if (!wordsData) wordsData = this._readFile(path + "/" + dictionary + "/" + dictionary + ".dic");
-    }
+    if (!affData) affData = fs.readFileSync("typo/dictionaries/" + dictionary + "/" + dictionary + ".aff", "utf8");
+    if (!wordsData) wordsData = fs.readFileSync("typo/dictionaries/" + dictionary + "/" + dictionary + ".dic", "utf8");
 
     this.rules = this._parseAFF(affData);
 
