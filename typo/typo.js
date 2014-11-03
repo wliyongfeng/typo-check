@@ -757,9 +757,10 @@ Typo.prototype = {
   }
 };
 
+var typo = new Typo('en_US');
+
 module.exports = {
   check: function(word) {
-    var typo = new Typo('en_US');
     return typo.check(word);
   }
 };
