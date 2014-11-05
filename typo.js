@@ -53,8 +53,8 @@ var Typo = function(dictionary, affData, wordsData, settings) {
   if (dictionary) {
     this.dictionary = dictionary;
 
-    if (!affData) affData = fs.readFileSync(__dirname + "/" + dictionary + "/" + dictionary + ".aff", "utf8");
-    if (!wordsData) wordsData = fs.readFileSync(__dirname + "/" +  dictionary + "/" + dictionary + ".dic", "utf8");
+    if (!affData) affData = fs.readFileSync(__dirname + "/dictionaries/" + dictionary + "/" + dictionary + ".aff", "utf8");
+    if (!wordsData) wordsData = fs.readFileSync(__dirname + "/dictionaries/" +  dictionary + "/" + dictionary + ".dic", "utf8");
 
     this.rules = this._parseAFF(affData);
 
